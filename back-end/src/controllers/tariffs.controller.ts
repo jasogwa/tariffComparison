@@ -15,25 +15,25 @@ const computeTariff = async (req: Request, res: Response) => {
             const tariffTypeOneCalculation =
                 externalTariffProvider[i].baseCost * 12 +
                 consumption * externalTariffProvider[i].additionalKwhCost * 0.01;
-            const CostOneResponse = {
+            const costOneResponse = {
                 tariffName: externalTariffProvider[i].name,
                 annualCosts: tariffTypeOneCalculation
             };
-            response.push(CostOneResponse);
+            response.push(costOneResponse);
         } else if (externalTariffProvider[i].type === 2) {
             const tariffTypeTwoCalculation =
                 externalTariffProvider[i].baseCost + 500 * externalTariffProvider[i].additionalKwhCost * 0.01;
-            let CostTwoResponse = {
+            let costTwoResponse = {
                 tariffName: externalTariffProvider[i].name,
                 annualCosts: externalTariffProvider[i].baseCost
             };
             if (consumption > externalTariffProvider[i].includedKwh) {
-                CostTwoResponse = {
+                costTwoResponse = {
                     tariffName: externalTariffProvider[i].name,
                     annualCosts: tariffTypeTwoCalculation
                 };
             }
-            response.push(CostTwoResponse);
+            response.push(costTwoResponse);
         }
     }
 
