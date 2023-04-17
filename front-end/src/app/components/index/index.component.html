@@ -63,7 +63,10 @@
                                 <div>
                                     <small class="text-body-secondary">{{ consumption.tariffName }}</small>
                                 </div>
-                                <span class="text-body-secondary">{{ consumption.annualCosts }}</span>
+                                <span class="text-body-secondary">
+                                    <span class="cost">Annual cost: </span>
+                                    {{  consumption.annualCosts +' €'}}
+                                </span>
                             </li>
                         </ul>
                     </div>
